@@ -1,0 +1,19 @@
+1.Register
+curl --request POST \
+  --url http://localhost:8080/milestone_tracker/uma/register/3 \
+  --header 'User-Agent: insomnia/10.1.1'
+
+2. Update Status
+curl --request POST \
+  --url http://localhost:8080/milestone_tracker/uma/update/2 \
+  --header 'User-Agent: insomnia/10.1.1'
+
+3. Pagination
+curl --request POST \
+  --url http://localhost:8080/milestone_tracker/uma/fetch \
+  --header 'Content-Type: application/json' \
+  --header 'User-Agent: insomnia/10.1.1' \
+  --data '{
+	"page": 0,
+	"size": 10
+}'

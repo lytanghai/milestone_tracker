@@ -112,10 +112,7 @@ public class MilestoneService {
     }
 
     public ResponseBuilderUtils<PaginationResponseDto<MilestoneListingResponse>> listingMilestone(MilestoneListingFilterRequestDto request, HttpServletRequest httpServletRequest) {
-        Sort sort = Sort.by(
-                Sort.Direction.fromString(request.getSortDirection()),
-                request.getSortBy()
-        );
+        Sort sort = Sort.by(Sort.Direction.fromString(request.getSortDirection()), request.getSortBy());
 
         Pageable pageable = PageRequest.of(
                 request.getPage(),

@@ -9,10 +9,9 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 
 @Entity
-@Table(name = "milestone_user_access")
+@Table(name = "user_milestone_access")
 @Data
 public class MilestoneUserAccess {
 
@@ -21,7 +20,7 @@ public class MilestoneUserAccess {
     private Long userId;
 
     @Column(name = "is_enabled")
-    private Boolean isEnabled = true;
+    private Boolean isEnabled = false;
 
     @Column(name = "enabled_at")
     private LocalDateTime enabledAt;
