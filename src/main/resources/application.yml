@@ -1,0 +1,48 @@
+spring:
+  application:
+    name: milestone_tracker
+  jackson:
+    property-naming-strategy: SNAKE_CASE
+    time-zone: Asia/Phnom_Penh
+  profiles:
+    active: local
+  datasource:
+    url: ${datasource.url}
+    username: ${datasource.username}
+    password: ${datasource.password}
+  jpa:
+    hibernate:
+      ddl-auto: none   # auto create/update tables
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+server:
+  max-http-request-header-size: 1MB
+  tomcat:
+    max-swallow-size: 10MB
+  servlet:
+    context-path: /kark-profit
+# Rest Client Config
+rest:
+  client:
+    # Global defaults
+    retry:
+      enabled: false
+      max-attempts: 3
+      initial-delay-millis: 10000
+      retryable-exceptions:
+        - java.net.SocketTimeoutException
+        - java.net.ConnectException
+        - Http5xx
+    connection:
+      connectTimeout: 25000
+      readTimeout: 25000
+
+    # Default client config (overrides global)
+    default-config:
+      connection:
+        connectTimeout: 10000
+        readTimeout: 10000
+
+kind: Application

@@ -1,0 +1,51 @@
+1. create
+curl --request POST \
+  --url http://localhost:8080/milestone_tracker/milestone/create \
+  --header 'Content-Type: application/json' \
+  --header 'User-Agent: insomnia/10.1.1' \
+  --data '{
+	"code": "WIN_10_STREAK",
+	"title": "Win 10 Trades Streak",
+	"title_kh": "ឈ្នះការជួញដូរ 10 ដងជាប់គ្នា",
+	"description": "User wins 10 trades continuously",
+	"description_kh": "អ្នកប្រើឈ្នះការជួញដូរ 10 ដងជាប់គ្នា",
+	"icon_url": "https://abc.com/icon.png",
+	"conditions": [
+		{
+			"sequence_no": 1,
+			"metric_type": "WIN_STREAK",
+			"operator": ">=",
+			"target_value": 10
+		}
+	]
+}'
+
+2. query
+curl --request GET \
+  --url http://localhost:8080/milestone_tracker/milestone/query/5 \
+  --header 'User-Agent: insomnia/10.1.1'
+
+3. delete
+curl --request POST \
+  --url http://localhost:8080/milestone_tracker/milestone/delete/4 \
+  --header 'User-Agent: insomnia/10.1.1'
+
+4. pagination
+curl --request POST \
+  --url http://localhost:8080/milestone_tracker/milestone/fetch \
+  --header 'Content-Type: application/json' \
+  --header 'User-Agent: insomnia/10.1.1' \
+  --data '{
+	"page": 0,
+	"size": 10
+}'
+
+5. update
+curl --request PUT \
+  --url http://localhost:8080/milestone_tracker/milestone/update \
+  --header 'Content-Type: application/json' \
+  --header 'User-Agent: insomnia/10.1.1' \
+  --data '{
+	"milestone_id": 5,
+	"title": "Win 50 Trades Streak"
+}'
