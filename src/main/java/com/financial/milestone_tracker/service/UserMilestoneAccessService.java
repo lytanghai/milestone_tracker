@@ -57,11 +57,7 @@ public class UserMilestoneAccessService {
         return new ResponseBuilderUtils<>(ApplicationCode.HTTP_200, ApplicationCode.UPDATED, null);
     }
 
-    public ResponseBuilderUtils<PaginationResponseDto<UMAListingResponse>> pagination(
-
-            UMAListingFilterRequestDto filterRequest,
-            HttpServletRequest httpServletRequest
-    ) {
+    public ResponseBuilderUtils<PaginationResponseDto<UMAListingResponse>> pagination(UMAListingFilterRequestDto filterRequest, HttpServletRequest httpServletRequest) {
 
         Sort sort = Sort.by(
                 Sort.Direction.fromString(
@@ -86,13 +82,9 @@ public class UserMilestoneAccessService {
                 umaPage.getContent()
                         .stream()
                         .map(uma -> {
+                            UMAListingResponse response = new UMAListingResponse();
 
-                            UMAListingResponse response =
-                                    new UMAListingResponse();
-
-                            response.setUserId(
-                                    uma.getUserId()
-                            );
+                            response.setUserId(uma.getUserId());
 
                             response.setIsEnabled(
                                     uma.getIsEnabled()

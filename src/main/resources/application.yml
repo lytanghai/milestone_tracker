@@ -18,6 +18,7 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
 server:
+  port: 8081
   max-http-request-header-size: 1MB
   tomcat:
     max-swallow-size: 10MB

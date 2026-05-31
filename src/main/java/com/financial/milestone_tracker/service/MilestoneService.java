@@ -128,7 +128,20 @@ public class MilestoneService {
         List<MilestoneListingResponse> responses =
                 milestonePage.getContent()
                         .stream()
-                        .map(milestoneMapper::toListingResponse)
+                        .map(milestone -> {
+                            MilestoneListingResponse response = new MilestoneListingResponse();
+                            response.setId(milestone.getId());
+                            response.setCode(milestone.getCode());
+                            response.setStatus(milestone.getStatus());
+                            response.setCreatedAt(milestone.getCreatedAt());
+                            response.setDescription(milestone.getDescription());
+                            response.setDescriptionKh(milestone.getDescriptionKh());
+                            response.setTitle(milestone.getTitle());
+                            response.setTitleKh(milestone.getTitleKh());
+                            response.setIconUrl(milestone.getIconUrl());
+
+                            return response;
+                        })
                         .toList();
 
         PaginationResponseDto<MilestoneListingResponse> response =
